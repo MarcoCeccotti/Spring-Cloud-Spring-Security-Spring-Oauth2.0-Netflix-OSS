@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.marco</groupId>
+	<artifactId>app-marco-cloud-admin-server</artifactId>
+	<packaging>war</packaging>
+
+	<parent>
+		<groupId>it.marco.builder</groupId>
+		<artifactId>marco-cloud-builder-apps</artifactId>
+		<version>1.0.1-SNAPSHOT</version>
+		<relativePath>../marco-cloud-builder-apps</relativePath>
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+	</properties>
+	
+	<dependencies>
+		
+		<!-- Spring security -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<!-- Spring boot admin -->
+		<dependency>
+		    <groupId>de.codecentric</groupId>
+		    <artifactId>spring-boot-admin-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-server-ui</artifactId>
+		</dependency>
+		
+		<!-- Marco libs -->
+		<dependency>
+			<groupId>com.marco</groupId>
+			<artifactId>marco-cloud-base</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<finalName>marco-admin-server</finalName>
+		<defaultGoal>package</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<warName>marco-admin-server</warName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
