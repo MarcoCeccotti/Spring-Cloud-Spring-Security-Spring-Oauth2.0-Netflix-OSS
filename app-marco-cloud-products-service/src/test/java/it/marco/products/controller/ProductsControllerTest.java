@@ -1,9 +1,10 @@
-package it.marco.products;
+package it.marco.products.controller;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.reset;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -15,28 +16,32 @@ import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import it.marco.products.bean.product.Product;
-import it.marco.products.controller.ProductsController;
 import it.marco.products.service.product.ProductService;
 
-@SpringBootTest
-public class ProductsApplicationTests {
-
-	@InjectMocks
-	private ProductsController productsController;
+@ExtendWith(MockitoExtension.class)
+public class ProductsControllerTest {
 	
 	@Mock
 	private ProductService productService;
+	
+	@InjectMocks
+	private ProductsController productsController;
 	
 	public MockMvc mockMvc;
 	
@@ -49,7 +54,14 @@ public class ProductsApplicationTests {
 		validProduct.setName("Trippa");
 		validProduct.setQuantity(1);
 		
-		mockMvc = MockMvcBuilders.standaloneSetup(productsController).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(productsController)
+									  .setMessageConverters(jackson2HttpMessageConverter())
+									  .build();
+	}
+	
+	@AfterEach
+	private void tearDown() {
+		reset(productService);
 	}
 	
 	@Test
@@ -97,5 +109,11 @@ public class ProductsApplicationTests {
 					.andExpect(jsonPath("$.payload[0].id", is(validProduct.getId())))
 					.andExpect(jsonPath("$.payload[1].name", is("Manzo")));
         }
+	}
+	
+	public MappingJackson2HttpMessageConverter jackson2HttpMessageConverter() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		return new MappingJackson2HttpMessageConverter(objectMapper);
 	}
 }

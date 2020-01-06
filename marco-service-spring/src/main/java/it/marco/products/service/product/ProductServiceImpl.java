@@ -2,8 +2,6 @@ package it.marco.products.service.product;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
 
 import it.marco.marco.cloud.service.log.LogService;
@@ -14,11 +12,14 @@ import it.marco.products.dao.product.Products_DAO;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	@Inject
 	private LogService logService;
 	
-	@Inject
 	private Products_DAO products_DAO;
+	
+	public ProductServiceImpl(LogService logService, Products_DAO products_DAO) {
+		this.logService = logService;
+		this.products_DAO = products_DAO;
+	}
 	
 	@Override
 	public Product getProduct(int id) {

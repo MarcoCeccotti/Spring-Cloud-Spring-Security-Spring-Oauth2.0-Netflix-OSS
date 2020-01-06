@@ -1,6 +1,5 @@
 package it.marco.products.controller;
 
-import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.http.HttpStatus;
@@ -25,13 +24,16 @@ import it.marco.products.service.product.ProductService;
 @RequestMapping(value = "/products")
 public class ProductsController {
 	
-	@Inject
 	private ProductService productService;
+	
+	public ProductsController(ProductService productService) {
+		this.productService = productService;
+	}
 	
 	@ApiOperation(value = "Retrieves all the products")
 	@ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header")})
 	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON)
-	public ResponseEntity<?> getProducts() throws Exception {
+	public ResponseEntity<WrapperResponse> getProducts() throws Exception {
 		
 		return ResponseEntity
 					.status(HttpStatus.OK)
@@ -41,7 +43,7 @@ public class ProductsController {
 	@ApiOperation(value = "Retrieves product by id passed as path variable")
 	@ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header")})
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON)
-	public ResponseEntity<?> getProduct(@PathVariable int id) throws Exception {
+	public ResponseEntity<WrapperResponse> getProduct(@PathVariable int id) throws Exception {
 		
 		return ResponseEntity
 					.status(HttpStatus.OK)
@@ -51,7 +53,7 @@ public class ProductsController {
 	@ApiOperation(value = "Saves a new product on db")
 	@ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header")})
 	@PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-	public ResponseEntity<?> saveProduct(@RequestBody Product product) throws Exception {
+	public ResponseEntity<WrapperResponse> saveProduct(@RequestBody Product product) throws Exception {
 		
 		return ResponseEntity
 					.status(HttpStatus.OK)
@@ -61,7 +63,7 @@ public class ProductsController {
 	@ApiOperation(value = "Deletes a product from db")
 	@ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header")})
 	@DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON, produces = MediaType.APPLICATION_JSON)
-	public ResponseEntity<?> deleteProduct(@PathVariable int id) throws Exception {
+	public ResponseEntity<WrapperResponse> deleteProduct(@PathVariable int id) throws Exception {
 		
 		return ResponseEntity
 					.status(HttpStatus.OK)
