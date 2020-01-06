@@ -33,19 +33,16 @@ public class LogoutServiceImpl implements LogoutService {
 		Executors.newCachedThreadPool().submit(() -> {
 			
 			// quando un utente esegue il logout deve essere bannato il token utilizzato, di modo che sia obbligato a rifare il login
-			User_banned user_banned = new User_banned(null, session_infos.getAccess_token(), null, "");
-			String ban_response = remoteBanCallService.banUser(session_infos.getAccess_token(), user_banned);
+			String ban_response = remoteBanCallService.banUser(session_infos.getAccess_token(), new User_banned(null, session_infos.getAccess_token(), null, ""));
 			
 			if (ban_response.contains("down")) {
 				logService.printAndSaveLoginLog(LogUtils.ERROR, ban_response);
 				
 			} else {
 	
-				ban_response = "Token " + session_infos.getAccess_token() + " dell'utente " + session_infos.getUsername() +  " bannato con successo";
+				ban_response = "Token " + session_infos.getAccess_token() + " dell'utente " + session_infos.getUsername() + " bannato con successo";
 				logService.printAndSaveLoginLog(LogUtils.INFO, ban_response);
 			}
-			
-			return ban_response;
 		});
 		
 		return null;
