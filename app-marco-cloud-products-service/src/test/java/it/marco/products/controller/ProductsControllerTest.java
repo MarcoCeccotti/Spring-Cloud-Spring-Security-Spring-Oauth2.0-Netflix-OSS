@@ -45,7 +45,7 @@ public class ProductsControllerTest {
 	
 	public MockMvc mockMvc;
 	
-	private Product validProduct;
+	public Product validProduct;
 	
 	@BeforeEach
 	private void setUp() {
