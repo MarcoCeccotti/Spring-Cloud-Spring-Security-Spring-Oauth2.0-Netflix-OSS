@@ -16,9 +16,10 @@ import com.google.gson.Gson;
 import it.marco.marco.bean.http.WrapperResponse;
 import it.marco.marco.utils.utilities.AuthUtils;
 import it.marco.products.bean.product.Product;
+import it.marco.products.interfaces.ControllerTests;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ProductsControllerIT {
+public class ProductsControllerIT implements ControllerTests {
 
 	@Autowired
 	private TestRestTemplate testRestTemplate;

@@ -1,11 +1,12 @@
 package it.marco.products.controller;
 
-import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.reset;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -32,10 +33,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.marco.products.bean.product.Product;
+import it.marco.products.interfaces.ControllerTests;
 import it.marco.products.service.product.ProductService;
 
 @ExtendWith(MockitoExtension.class)
-public class ProductsControllerTest {
+public class ProductsControllerTest implements ControllerTests {
 	
 	@Mock
 	private ProductService productService;
@@ -72,8 +74,32 @@ public class ProductsControllerTest {
 		this.mockMvc.perform(get("/products/5"))
 					.andExpect(status().isOk())
 					.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+					//.andDo(print())
+					.andExpect(jsonPath("$.payload.id", is(validProduct.getId())));
+	}
+	
+	@Test
+	public void saveProduct() throws Exception {
+
+		given(productService.saveProduct(any(Product.class))).willReturn(validProduct);
+		
+		this.mockMvc.perform(post("/products/save")
+								.content(asJsonString(validProduct))
+								.contentType(MediaType.APPLICATION_JSON)
+								.characterEncoding("utf-8")
+							)
+					.andExpect(status().isOk())
+					.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 					.andDo(print())
 					.andExpect(jsonPath("$.payload.id", is(validProduct.getId())));
+	}
+	
+	public static String asJsonString(final Object obj) {
+	    try {
+	        return new ObjectMapper().writeValueAsString(obj);
+	    } catch (Exception e) {
+	        throw new RuntimeException(e);
+	    }
 	}
 
 	@DisplayName("List Ops - ")
@@ -104,7 +130,7 @@ public class ProductsControllerTest {
 			mockMvc.perform(get("/products/all").accept(MediaType.APPLICATION_JSON))
 					.andExpect(status().isOk())
 					.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-					.andDo(print())
+					//.andDo(print())
 					.andExpect(jsonPath("$.payload", hasSize(2)))
 					.andExpect(jsonPath("$.payload[0].id", is(validProduct.getId())))
 					.andExpect(jsonPath("$.payload[1].name", is("Manzo")));

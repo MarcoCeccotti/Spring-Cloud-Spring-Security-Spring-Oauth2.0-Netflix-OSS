@@ -25,7 +25,6 @@ public class ProductServiceImpl implements ProductService {
 	public Product getProduct(int id) {
 		
 		String method_name = new Throwable().getStackTrace()[0].getMethodName();
-		
 		logService.printAndSaveActionLog(LogUtils.INFO, "Effettuata richiesta prodotto " + id, this.getClass().getName(), method_name, "Effettuata richiesta prodotto " + id);
 		
 		return products_DAO.findById(id).get();
@@ -35,7 +34,6 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProducts() {
 		
 		String method_name = new Throwable().getStackTrace()[0].getMethodName();
-		
 		logService.printAndSaveActionLog(LogUtils.INFO, "Effettuata richiesta prodotti", this.getClass().getName(), method_name, "Effettuata richiesta prodotti");
 		
 		return products_DAO.findAllByOrderById();
@@ -45,7 +43,6 @@ public class ProductServiceImpl implements ProductService {
 	public Product saveProduct(Product product) {
 		
 		String method_name = new Throwable().getStackTrace()[0].getMethodName();
-		
 		logService.printAndSaveActionLog(LogUtils.INFO, "Salvataggio nuovo prodotto", this.getClass().getName(), method_name, "Salvataggio nuovo prodotto");
 		
 		return products_DAO.save(product);
@@ -55,7 +52,6 @@ public class ProductServiceImpl implements ProductService {
 	public int deleteProduct(int id) {
 		
 		String method_name = new Throwable().getStackTrace()[0].getMethodName();
-		
 		logService.printAndSaveActionLog(LogUtils.INFO, "Cancellazione prodotto con id " + id, this.getClass().getName(), method_name, "Cancellazione prodotto");
 		
 		products_DAO.deleteById(id);
