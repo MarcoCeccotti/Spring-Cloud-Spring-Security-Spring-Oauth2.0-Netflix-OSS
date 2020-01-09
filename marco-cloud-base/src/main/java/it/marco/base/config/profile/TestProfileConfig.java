@@ -9,8 +9,8 @@ import org.springframework.context.annotation.PropertySources;
 @Profile("test")
 @PropertySources({
 	@PropertySource(value = "classpath:crashlytic.properties"),
-	@PropertySource(value = "classpath:test/db.properties"),
 	@PropertySource(value = "classpath:mail.properties"),
+	@PropertySource(value = "classpath:test/db.properties"),
 	@PropertySource(value = "classpath:test/cache.properties"),
 	@PropertySource(value = "classpath:test/admin.properties"),
 	@PropertySource(value = "classpath:test/hystrix.properties"),

@@ -32,4 +32,22 @@ public interface ShoppingService {
 	 * @return
 	 */
 	public Product deleteShoppingItemByUsernameAndBought(String username, boolean bought, Product product);
+	
+	/**
+	 * TODO DA COMPLETARE
+	 * @param username
+	 * @param bought
+	 * @param product
+	 * @return
+	 */
+	public Product buyShoppingItemByUsernameAndBought(String username, boolean bought, Product product);
+	
+	/**
+	 * TODO DA COMPLETARE
+	 * @param username
+	 * @param bought
+	 * @param products
+	 * @return
+	 */
+	public List<Product> buyAllShoppingItemByUsernameAndBought(String username, boolean bought, List<Product> products);
 }

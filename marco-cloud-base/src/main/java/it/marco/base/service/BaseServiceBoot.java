@@ -11,17 +11,6 @@ import org.springframework.context.annotation.FilterType;
 @EnableCircuitBreaker
 @EnableCaching
 @EnableDiscoveryClient
-//@PropertySources({
-//	@PropertySource(value = "classpath:crashlytic.properties"),
-//	@PropertySource(value = "classpath:db.properties"),
-//	@PropertySource(value = "classpath:mail.properties"),
-//	@PropertySource(value = "classpath:cache.properties"),
-//	@PropertySource(value = "classpath:admin.properties"),
-//	@PropertySource(value = "classpath:hystrix.properties"),
-//	@PropertySource(value = "classpath:actuators.properties"),
-//	@PropertySource(value = "classpath:ribbon.properties"),
-//	@PropertySource(value = "classpath:eureka.properties")
-//})
 @ComponentScan(basePackages = {"it.marco.marco"},
 			   excludeFilters = {
 					   @ComponentScan.Filter(type = FilterType.REGEX, pattern = "it.marco.marco.cloud.config.cors.*"),

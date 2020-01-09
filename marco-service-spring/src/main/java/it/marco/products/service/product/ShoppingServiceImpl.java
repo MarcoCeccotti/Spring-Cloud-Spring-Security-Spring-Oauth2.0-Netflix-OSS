@@ -51,7 +51,7 @@ public class ShoppingServiceImpl implements ShoppingService {
 	public Shopping saveShoppingItemByUsernameAndBought(String username, boolean bought, Product product) {
 		
 		String method_name = new Throwable().getStackTrace()[0].getMethodName();
-		String msg_log = "Salvataggio nuovo item nello shopping per " + username;
+		String msg_log = "Salvataggio nuovo prodotto " + product.getName() + " nello shopping per " + username;
 		logService.printAndSaveActionLog(LogUtils.INFO, msg_log, this.getClass().getName(), method_name, msg_log);
 		
 		Shopping shopping = new Shopping(username, bought, product.getId());
@@ -63,11 +63,47 @@ public class ShoppingServiceImpl implements ShoppingService {
 	public Product deleteShoppingItemByUsernameAndBought(String username, boolean bought, Product product) {
 		
 		String method_name = new Throwable().getStackTrace()[0].getMethodName();
-		String msg_log = "Cancellazione item nello shopping per " + username;
+		String msg_log = "Cancellazione prodotto nello shopping per " + username;
 		logService.printAndSaveActionLog(LogUtils.INFO, msg_log, this.getClass().getName(), method_name, msg_log);
 		
 		shopping_DAO.delete(shopping_DAO.findByUsernameAndBoughtAndProductId(username, bought, product.getId()));
 		
 		return product;
+	}
+
+	@Override
+	public Product buyShoppingItemByUsernameAndBought(String username, boolean bought, Product product) {
+		
+		String method_name = new Throwable().getStackTrace()[0].getMethodName();
+		String msg_log = "Acquisto nuovo prodotto " + product.getName() + " dal carrello per " + username;
+		logService.printAndSaveActionLog(LogUtils.INFO, msg_log, this.getClass().getName(), method_name, msg_log);
+		
+		List<Shopping> productsToBuy = shopping_DAO.findAllByUsernameAndBoughtAndProductId(username, bought, product.getId());
+		
+		for (Shopping toShop: productsToBuy) {
+			Optional<Product> prodToEdit = products_DAO.findById(product.getId());
+			if (prodToEdit.isPresent()) {
+				prodToEdit.get().setQuantity(prodToEdit.get().getQuantity() - 1);
+				products_DAO.save(prodToEdit.get());
+			}
+			toShop.setBought(true);
+			shopping_DAO.save(toShop);
+		}
+		
+		return product;
+	}
+
+	@Override
+	public List<Product> buyAllShoppingItemByUsernameAndBought(String username, boolean bought, List<Product> products) {
+		
+		String method_name = new Throwable().getStackTrace()[0].getMethodName();
+		String msg_log = "Acquistati tutti i prodotti dal carrello per " + username;
+		logService.printAndSaveActionLog(LogUtils.INFO, msg_log, this.getClass().getName(), method_name, msg_log);
+		
+		for (Product product: products) {
+			this.buyShoppingItemByUsernameAndBought(username, bought, product);
+		}
+		
+		return products;
 	}
 }

@@ -14,5 +14,7 @@ public interface Shopping_DAO extends JpaRepository<Shopping, Integer> {
 	
 	public Shopping findByUsernameAndBoughtAndProductId(String username, boolean bought, int productId);
 	
+	public List<Shopping> findAllByUsernameAndBoughtAndProductId(String username, boolean bought, int productId);
+	
 	public List<Shopping> findAllByUsernameAndBought(String username, boolean bought);
 }
