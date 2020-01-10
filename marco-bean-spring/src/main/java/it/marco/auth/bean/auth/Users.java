@@ -73,6 +73,8 @@ public class Users {
 	private Boolean privacy_authorization;
 	@Column(name = "pwd_spring")
 	private String password;
+	@Column
+	private String image_path;
 	
 	public String getUserTag() {
 		return userTag;
@@ -239,5 +241,10 @@ public class Users {
 	public void setPrivacy_authorization(Boolean privacy_authorization) {
 		this.privacy_authorization = privacy_authorization;
 	}
-	
+	public String getImage_path() {
+		return image_path;
+	}
+	public void setImage_path(String image_path) {
+		this.image_path = image_path;
+	}
 }

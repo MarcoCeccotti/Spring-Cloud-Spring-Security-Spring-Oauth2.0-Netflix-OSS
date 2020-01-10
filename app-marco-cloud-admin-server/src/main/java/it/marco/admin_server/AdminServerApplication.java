@@ -15,9 +15,9 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 @EnableDiscoveryClient
 @ComponentScan(basePackages = {"it.marco.admin_server"})
 @PropertySources({
-	@PropertySource(value = "classpath:eureka.properties"),
-	@PropertySource(value = "classpath:actuators.properties"),
-	@PropertySource(value = "classpath:admin.properties")
+	@PropertySource(value = "classpath:test/actuators.properties"),
+	@PropertySource(value = "classpath:test/admin.properties"),
+	@PropertySource(value = "classpath:eureka.properties")
 })
 @EnableAdminServer
 public class AdminServerApplication extends SpringBootServletInitializer {

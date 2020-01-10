@@ -12,8 +12,8 @@ import org.springframework.context.annotation.PropertySources;
 @EnableEurekaServer
 @PropertySources({
 	@PropertySource(value = "classpath:eureka.properties"),
-	@PropertySource(value = "classpath:actuators.properties"),
-	@PropertySource(value = "classpath:admin.properties")
+	@PropertySource(value = "classpath:test/actuators.properties"),
+	@PropertySource(value = "classpath:test/admin.properties")
 })
 public class DiscoveryServerApplication extends SpringBootServletInitializer {
 	
