@@ -1,4 +1,4 @@
-package it.marco.base.service;
+package it.marco.base.service.boot;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;

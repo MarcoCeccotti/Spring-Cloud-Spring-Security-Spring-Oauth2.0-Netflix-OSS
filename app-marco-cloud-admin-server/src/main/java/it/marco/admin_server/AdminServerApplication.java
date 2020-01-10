@@ -13,10 +13,9 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = {"it.marco.admin_server"})
+@ComponentScan(basePackages = {"it.marco.admin_server", "it.marco.base.server"})
 @PropertySources({
-	@PropertySource(value = "classpath:test/actuators.properties"),
-	@PropertySource(value = "classpath:test/admin.properties"),
+	@PropertySource(value = "classpath:admin.properties"),
 	@PropertySource(value = "classpath:eureka.properties")
 })
 @EnableAdminServer

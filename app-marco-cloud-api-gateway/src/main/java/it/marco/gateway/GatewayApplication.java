@@ -16,7 +16,7 @@ import it.marco.marco.cloud.config.ribbon.CloudRibbonConfig;
 
 @SpringBootApplication
 @EnableZuulProxy
-@ComponentScan(basePackages = {"it.marco.base", "it.marco.gateway", "it.marco.marco.cloud.config.cors"})
+@ComponentScan(basePackages = {"it.marco.base.service", "it.marco.gateway", "it.marco.marco.cloud.config.cors"})
 @EnableJpaRepositories(basePackages = {"it.marco.gateway", "it.marco.marco", "it.marco.auth.dao.auth"})
 @EntityScan(basePackages = {"it.marco.gateway", "it.marco.marco", "it.marco.auth.bean.auth"})
 @PropertySource({"classpath:zuul.properties"})

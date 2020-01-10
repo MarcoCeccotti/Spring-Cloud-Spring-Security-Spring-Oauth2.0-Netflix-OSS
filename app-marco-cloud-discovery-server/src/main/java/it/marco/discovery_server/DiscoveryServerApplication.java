@@ -5,15 +5,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
 @SpringBootApplication
 @EnableEurekaServer
+@ComponentScan(basePackages = {"it.marco.base.server"})
 @PropertySources({
 	@PropertySource(value = "classpath:eureka.properties"),
-	@PropertySource(value = "classpath:test/actuators.properties"),
-	@PropertySource(value = "classpath:test/admin.properties")
+//	@PropertySource(value = "classpath:test/actuators.properties"),
+//	@PropertySource(value = "classpath:test/admin.properties")
 })
 public class DiscoveryServerApplication extends SpringBootServletInitializer {
 	

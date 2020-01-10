@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"it.marco.products", "it.marco.base"})
+@ComponentScan(basePackages = {"it.marco.products", "it.marco.base.service"})
 @EnableJpaRepositories(basePackages = {"it.marco.products", "it.marco.marco"})
 @EntityScan(basePackages = {"it.marco.products", "it.marco.marco"})
 public class ProductsApplication extends SpringBootServletInitializer {
