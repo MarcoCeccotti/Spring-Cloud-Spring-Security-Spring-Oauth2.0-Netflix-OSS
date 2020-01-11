@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySources;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = {"it.marco.turbine", "it.marco.base.service"})
+@ComponentScan(basePackages = {"it.marco.turbine"})
 @PropertySources({
 	@PropertySource(value = "classpath:eureka.properties"),
 	@PropertySource(value = "classpath:turbine.properties")

@@ -12,7 +12,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.marco.auth.test.profile.ProvaService;
 import it.marco.marco.bean.mail.Mail_attachment;
 import it.marco.marco.bean.mail.Mail_server;
 import it.marco.marco.cloud.config.properties.StoneProperties;
@@ -39,10 +38,6 @@ public class SchedulerMailSender {
 	@Inject
 	private StoneProperties stoneProps;
 	
-	@Inject
-//	private EffettivaStringa effettivaStringa;
-	private ProvaService provaService;
-	
 	// properties per salvataggio mail
 	@Value("${company_name}")
 	private String company_name;
@@ -50,9 +45,6 @@ public class SchedulerMailSender {
 	@Scheduled(cron = "0 0/1 * * * ?") // ogni 10 minuti
 	@Transactional(rollbackFor = Exception.class)
 	public void retrySendingMail() {
-		
-//		System.out.println("STRINGA EFFETTIVA = " + effettivaStringa.getStrigaEffettiva());
-		System.out.println("PROVA STRINGA = " + provaService.provaStringa());
 		
 		String method_name =  new Throwable().getStackTrace()[0].getMethodName();
 		
