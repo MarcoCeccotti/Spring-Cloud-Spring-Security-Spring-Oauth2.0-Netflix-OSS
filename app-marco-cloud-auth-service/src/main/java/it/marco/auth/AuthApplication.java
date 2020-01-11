@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import it.marco.marco.cloud.config.ribbon.CloudRibbonConfig;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"it.marco.auth", "it.marco.base.service", "it.marco.marco.scheduler"})
+@ComponentScan(basePackages = {"it.marco.auth", "it.marco.base", "it.marco.marco.scheduler"})
 @EnableJpaRepositories(basePackages = {"it.marco.auth", "it.marco.marco"})
 @EntityScan(basePackages = {"it.marco.auth", "it.marco.marco"})
 @EnableFeignClients(basePackages = {"it.marco.marco.service.feign"})

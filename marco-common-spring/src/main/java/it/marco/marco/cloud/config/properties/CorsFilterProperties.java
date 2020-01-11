@@ -1,87 +1,35 @@
 package it.marco.marco.cloud.config.properties;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
+public interface CorsFilterProperties {
 
-@Component
-@ConfigurationProperties(prefix = "cors-filter")
-@PropertySource("classpath:cors_filter.properties")
-public class CorsFilterProperties {
-	
-	private boolean allowCredentials;
-	
-	private Map<String, String> allowed;
-	
-	private List<String> allowedOrigins;
-	private List<String> allowedHeaders;
-	private List<String> allowedMethods;
-	
-	private int maxAge;
-	
-	private String pathConfiguration;
+	public boolean isAllowCredentials();
 
-	public boolean isAllowCredentials() {
-		return allowCredentials;
-	}
+	public void setAllowCredentials(boolean allowCredentials);
 
-	public void setAllowCredentials(boolean allowCredentials) {
-		this.allowCredentials = allowCredentials;
-	}
+	public Map<String, String> getAllowed();
 
-	public Map<String, String> getAllowed() {
-		return allowed;
-	}
+	public void setAllowed(Map<String, String> allowed);
 
-	public void setAllowed(Map<String, String> allowed) {
-		this.allowed = allowed;
+	public List<String> getAllowedOrigins();
 
-		this.setAllowedOrigins(Arrays.asList(this.allowed.get("origins")));
-		this.setAllowedHeaders(Arrays.asList(this.allowed.get("headers")));
-		this.setAllowedMethods(Arrays.asList(this.allowed.get("methods")));
-	}
+	public void setAllowedOrigins(List<String> allowedOrigins);
 
-	public List<String> getAllowedOrigins() {
-		return allowedOrigins;
-	}
+	public List<String> getAllowedHeaders();
 
-	public void setAllowedOrigins(List<String> allowedOrigins) {
-		this.allowedOrigins = allowedOrigins;
-	}
+	public void setAllowedHeaders(List<String> allowedHeaders);
 
-	public List<String> getAllowedHeaders() {
-		return allowedHeaders;
-	}
+	public List<String> getAllowedMethods();
 
-	public void setAllowedHeaders(List<String> allowedHeaders) {
-		this.allowedHeaders = allowedHeaders;
-	}
+	public void setAllowedMethods(List<String> allowedMethods);
 
-	public List<String> getAllowedMethods() {
-		return allowedMethods;
-	}
+	public String getPathConfiguration();
 
-	public void setAllowedMethods(List<String> allowedMethods) {
-		this.allowedMethods = allowedMethods;
-	}
+	public void setPathConfiguration(String pathConfiguration);
 
-	public String getPathConfiguration() {
-		return pathConfiguration;
-	}
+	public int getMaxAge();
 
-	public void setPathConfiguration(String pathConfiguration) {
-		this.pathConfiguration = pathConfiguration;
-	}
-
-	public int getMaxAge() {
-		return maxAge;
-	}
-
-	public void setMaxAge(int maxAge) {
-		this.maxAge = maxAge;
-	}
+	public void setMaxAge(int maxAge);
 }

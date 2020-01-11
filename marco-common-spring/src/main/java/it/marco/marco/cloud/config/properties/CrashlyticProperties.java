@@ -2,136 +2,53 @@ package it.marco.marco.cloud.config.properties;
 
 import java.util.Map;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
-
-@Component
-@ConfigurationProperties(prefix = "crashlytic")
-@PropertySource("classpath:crashlytic.properties")
-public class CrashlyticProperties {
+public interface CrashlyticProperties {
 	
-	private String sender;
+    public String getSender();
 	
-	private String username;
+	public void setSender(String sender);
 	
-	private String password;
+	public String getUsername();
 	
-	private Map<String, String> recipients;
-
-	private String recipients_to;
-	private String recipients_cc;
-	private String recipients_bcc;
+	public void setUsername(String username);
 	
-	private Map<String, String> smtp;
+	public String getPassword();
 	
-    private boolean smtp_auth;
-    private boolean smtp_starttls_enable;
-    private String smtp_host;
-    private String smtp_port;
+	public void setPassword(String password);
 	
-    public String getSender() {
-		return sender;
-	}
+	public Map<String, String> getRecipients();
 	
-	public void setSender(String sender) {
-		this.sender = sender;
-	}
+	public void setRecipients(Map<String, String> recipients);
 	
-	public String getUsername() {
-		return username;
-	}
+	public String getRecipients_to();
+
+	public void setRecipients_to(String recipients_to);
+
+	public String getRecipients_cc();
+
+	public void setRecipients_cc(String recipients_cc);
+
+	public String getRecipients_bcc();
+
+	public void setRecipients_bcc(String recipients_bcc);
+
+	public Map<String, String> getSmtp();
 	
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public Map<String, String> getRecipients() {
-		return recipients;
-	}
-	
-	public void setRecipients(Map<String, String> recipients) {
-		this.recipients = recipients;
-		
-		this.setRecipients_to(this.recipients.get("to"));
-		this.setRecipients_cc(this.recipients.get("cc"));
-		this.setRecipients_bcc(this.recipients.get("bcc"));
-	}
-	
-	public String getRecipients_to() {
-		return recipients_to;
-	}
+	public void setSmtp(Map<String, String> smtp);
 
-	public void setRecipients_to(String recipients_to) {
-		this.recipients_to = recipients_to;
-	}
+	public boolean isSmtp_auth();
 
-	public String getRecipients_cc() {
-		return recipients_cc;
-	}
+	public void setSmtp_auth(boolean smtp_auth);
 
-	public void setRecipients_cc(String recipients_cc) {
-		this.recipients_cc = recipients_cc;
-	}
+	public boolean isSmtp_starttls_enable();
 
-	public String getRecipients_bcc() {
-		return recipients_bcc;
-	}
+	public void setSmtp_starttls_enable(boolean smtp_starttls_enable);
 
-	public void setRecipients_bcc(String recipients_bcc) {
-		this.recipients_bcc = recipients_bcc;
-	}
+	public String getSmtp_host();
 
-	public Map<String, String> getSmtp() {
-		return smtp;
-	}
-	
-	public void setSmtp(Map<String, String> smtp) {
-		this.smtp = smtp;
-	}
+	public void setSmtp_host(String smtp_host);
 
-	public boolean isSmtp_auth() {
-		return smtp_auth;
-	}
+	public String getSmtp_port();
 
-	public void setSmtp_auth(boolean smtp_auth) {
-		this.smtp_auth = smtp_auth;
-	}
-
-	public boolean isSmtp_starttls_enable() {
-		return smtp_starttls_enable;
-	}
-
-	public void setSmtp_starttls_enable(boolean smtp_starttls_enable) {
-		this.smtp_starttls_enable = smtp_starttls_enable;
-		
-		this.setSmtp_auth(Boolean.getBoolean(this.smtp.get("auth")));
-		this.setSmtp_starttls_enable(Boolean.getBoolean(this.smtp.get("starttls.enable")));
-		this.setSmtp_host(this.smtp.get("host"));
-		this.setSmtp_port(this.smtp.get("port"));
-	}
-
-	public String getSmtp_host() {
-		return smtp_host;
-	}
-
-	public void setSmtp_host(String smtp_host) {
-		this.smtp_host = smtp_host;
-	}
-
-	public String getSmtp_port() {
-		return smtp_port;
-	}
-
-	public void setSmtp_port(String smtp_port) {
-		this.smtp_port = smtp_port;
-	}
+	public void setSmtp_port(String smtp_port);
 }
