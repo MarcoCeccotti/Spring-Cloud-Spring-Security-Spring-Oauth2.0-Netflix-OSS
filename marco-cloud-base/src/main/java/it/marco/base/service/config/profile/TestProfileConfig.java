@@ -8,12 +8,12 @@ import org.springframework.context.annotation.PropertySources;
 @Configuration
 @Profile("test")
 @PropertySources({
-	@PropertySource(value = "classpath:service/test/db.properties"),
-	@PropertySource(value = "classpath:service/test/cache.properties"),
-	@PropertySource(value = "classpath:service/test/admin.properties"),
-	@PropertySource(value = "classpath:service/test/hystrix.properties"),
-	@PropertySource(value = "classpath:service/test/actuators.properties"),
-	@PropertySource(value = "classpath:service/test/ribbon.properties"),
-	@PropertySource(value = "classpath:service/test/eureka.properties")
+	@PropertySource(value = "classpath:test/db.properties"),
+	@PropertySource(value = "classpath:test/cache.properties"),
+	@PropertySource(value = "classpath:test/admin.properties"),
+	@PropertySource(value = "classpath:test/hystrix.properties"),
+	@PropertySource(value = "classpath:test/actuators.properties"),
+	@PropertySource(value = "classpath:test/ribbon.properties"),
+	@PropertySource(value = "classpath:test/eureka.properties")
 })
 public class TestProfileConfig {}

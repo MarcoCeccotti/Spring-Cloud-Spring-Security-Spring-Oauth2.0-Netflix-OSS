@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("dev")
+@Profile("test")
 public class CiaoMondoStringa implements ProvaService {
 
 	@Override

@@ -8,12 +8,12 @@ import org.springframework.context.annotation.PropertySources;
 @Configuration
 @Profile("prod")
 @PropertySources({
-	@PropertySource(value = "classpath:service/prod/db.properties"),
-	@PropertySource(value = "classpath:service/prod/cache.properties"),
-	@PropertySource(value = "classpath:service/prod/admin.properties"),
-	@PropertySource(value = "classpath:service/prod/hystrix.properties"),
-	@PropertySource(value = "classpath:service/prod/actuators.properties"),
-	@PropertySource(value = "classpath:service/prod/ribbon.properties"),
-	@PropertySource(value = "classpath:service/prod/eureka.properties")
+	@PropertySource(value = "classpath:prod/db.properties"),
+	@PropertySource(value = "classpath:prod/cache.properties"),
+	@PropertySource(value = "classpath:prod/admin.properties"),
+	@PropertySource(value = "classpath:prod/hystrix.properties"),
+	@PropertySource(value = "classpath:prod/actuators.properties"),
+	@PropertySource(value = "classpath:prod/ribbon.properties"),
+	@PropertySource(value = "classpath:prod/eureka.properties")
 })
 public class ProdProfileConfig {}

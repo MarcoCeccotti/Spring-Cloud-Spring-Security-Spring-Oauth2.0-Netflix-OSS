@@ -1,61 +1,24 @@
 package it.marco.marco.cloud.config.properties;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
+public interface AuthProperties {
 
-@Component
-@ConfigurationProperties(prefix = "auth")
-@PropertySource("classpath:auth.properties")
-public class AuthProperties {
-	
-	private String clientId;
-	
-	private String clientSecret;
-	
-	private int accessTokenValiditySeconds;
+	public String getClientId();
 
-	private int refreshTokenValiditySeconds;
-	
-	private String signinKey;
+	public void setClientId(String clientId);
 
-	public String getClientId() {
-		return clientId;
-	}
+	public String getClientSecret();
 
-	public void setClientId(String clientId) {
-		this.clientId = clientId;
-	}
+	public void setClientSecret(String clientSecret);
 
-	public String getClientSecret() {
-		return clientSecret;
-	}
+	public int getAccessTokenValiditySeconds();
 
-	public void setClientSecret(String clientSecret) {
-		this.clientSecret = clientSecret;
-	}
+	public void setAccessTokenValiditySeconds(int accessTokenValiditySeconds);
 
-	public int getAccessTokenValiditySeconds() {
-		return accessTokenValiditySeconds;
-	}
+	public int getRefreshTokenValiditySeconds();
 
-	public void setAccessTokenValiditySeconds(int accessTokenValiditySeconds) {
-		this.accessTokenValiditySeconds = accessTokenValiditySeconds;
-	}
+	public void setRefreshTokenValiditySeconds(int refreshTokenValiditySeconds);
 
-	public int getRefreshTokenValiditySeconds() {
-		return refreshTokenValiditySeconds;
-	}
+	public String getSigninKey();
 
-	public void setRefreshTokenValiditySeconds(int refreshTokenValiditySeconds) {
-		this.refreshTokenValiditySeconds = refreshTokenValiditySeconds;
-	}
-
-	public String getSigninKey() {
-		return signinKey;
-	}
-
-	public void setSigninKey(String signinKey) {
-		this.signinKey = signinKey;
-	}
+	public void setSigninKey(String signinKey);
 }

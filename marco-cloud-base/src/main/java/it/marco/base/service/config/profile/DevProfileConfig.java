@@ -8,12 +8,12 @@ import org.springframework.context.annotation.PropertySources;
 @Configuration
 @Profile("dev")
 @PropertySources({
-	@PropertySource(value = "classpath:service/dev/db.properties"),
-	@PropertySource(value = "classpath:service/dev/cache.properties"),
-	@PropertySource(value = "classpath:service/dev/admin.properties"),
-	@PropertySource(value = "classpath:service/dev/hystrix.properties"),
-	@PropertySource(value = "classpath:service/dev/actuators.properties"),
-	@PropertySource(value = "classpath:service/dev/ribbon.properties"),
-	@PropertySource(value = "classpath:service/dev/eureka.properties")
+	@PropertySource(value = "classpath:dev/db.properties"),
+	@PropertySource(value = "classpath:dev/cache.properties"),
+	@PropertySource(value = "classpath:dev/admin.properties"),
+	@PropertySource(value = "classpath:dev/hystrix.properties"),
+	@PropertySource(value = "classpath:dev/actuators.properties"),
+	@PropertySource(value = "classpath:dev/ribbon.properties"),
+	@PropertySource(value = "classpath:dev/eureka.properties")
 })
 public class DevProfileConfig {}
