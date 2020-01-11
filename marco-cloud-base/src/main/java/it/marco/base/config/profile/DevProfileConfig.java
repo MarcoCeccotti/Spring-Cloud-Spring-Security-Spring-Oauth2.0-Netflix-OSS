@@ -16,4 +16,8 @@ import org.springframework.context.annotation.PropertySources;
 	@PropertySource(value = "classpath:dev/ribbon.properties"),
 	@PropertySource(value = "classpath:dev/eureka.properties")
 })
-public class DevProfileConfig {}
+public class DevProfileConfig {
+	public DevProfileConfig() {
+		System.out.println("DEV - MI SONO INIZIALIZZATO!!!");
+	}
+}

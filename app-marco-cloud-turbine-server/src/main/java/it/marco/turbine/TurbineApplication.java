@@ -13,9 +13,9 @@ import org.springframework.context.annotation.PropertySources;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = {"it.marco.turbine"})
+@ComponentScan(basePackages = {"it.marco.base.config"})
 @PropertySources({
-	@PropertySource(value = "classpath:eureka.properties"),
+//	@PropertySource(value = "classpath:eureka.properties"),
 	@PropertySource(value = "classpath:turbine.properties")
 })
 @EnableHystrixDashboard

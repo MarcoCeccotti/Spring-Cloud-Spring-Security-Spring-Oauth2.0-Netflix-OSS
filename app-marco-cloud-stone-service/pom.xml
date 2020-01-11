@@ -37,7 +37,39 @@
 
 	</dependencies>
 
+    <profiles>
+	    <profile>
+		    <id>test</id>
+		    <properties>
+		        <activatedProperties>test</activatedProperties>
+		    </properties>
+		    <activation>
+		        <activeByDefault>true</activeByDefault>
+		    </activation>
+		</profile>
+		<profile>
+		    <id>dev</id>
+		    <properties>
+		        <activatedProperties>dev</activatedProperties>
+		    </properties>
+		</profile>
+		<profile>
+		    <id>prod</id>
+		    <properties>
+		        <activatedProperties>prod</activatedProperties>
+		    </properties>
+		</profile>
+	</profiles>
+	
 	<build>
+	
+		<resources>
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <filtering>true</filtering>
+	        </resource>
+	    </resources>
+	    
 		<finalName>marco-stone</finalName>
 		<defaultGoal>package</defaultGoal>
 		<plugins>
