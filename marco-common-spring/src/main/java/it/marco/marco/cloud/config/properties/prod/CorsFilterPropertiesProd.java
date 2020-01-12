@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import it.marco.marco.cloud.config.properties.CorsFilterPropertiesImpl;
+import it.marco.marco.cloud.config.properties.CorsFilterProperties;
 
 @Component
 @ConfigurationProperties(prefix = "cors-filter")
 @Profile("prod")
 @PropertySource("classpath:prod/cors_filter.properties")
-public class CorsFilterPropertiesProd extends CorsFilterPropertiesImpl {}
+public class CorsFilterPropertiesProd extends CorsFilterProperties {}

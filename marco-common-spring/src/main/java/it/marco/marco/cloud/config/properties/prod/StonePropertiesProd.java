@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import it.marco.marco.cloud.config.properties.StonePropertiesImpl;
+import it.marco.marco.cloud.config.properties.StoneProperties;
 
 @Component
 @ConfigurationProperties(prefix = "stone")
 @Profile("prod")
 @PropertySource("classpath:prod/stone.properties")
-public class StonePropertiesProd extends StonePropertiesImpl {}
+public class StonePropertiesProd extends StoneProperties {}
