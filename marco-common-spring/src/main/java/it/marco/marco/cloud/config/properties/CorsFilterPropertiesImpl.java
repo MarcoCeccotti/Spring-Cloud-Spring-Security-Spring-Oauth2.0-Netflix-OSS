@@ -4,6 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix = "cors-filter")
+@PropertySource("classpath:cors_filter.properties")
 public class CorsFilterPropertiesImpl implements CorsFilterProperties {
 	
 	private boolean allowCredentials;

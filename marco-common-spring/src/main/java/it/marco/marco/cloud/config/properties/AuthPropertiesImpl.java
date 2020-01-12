@@ -1,5 +1,12 @@
 package it.marco.marco.cloud.config.properties;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix = "auth")
+@PropertySource("classpath:auth.properties")
 public class AuthPropertiesImpl implements AuthProperties {
 	
 	private String clientId;

@@ -14,6 +14,7 @@ import org.springframework.context.annotation.PropertySources;
 	@PropertySource(value = "classpath:test/hystrix.properties"),
 	@PropertySource(value = "classpath:test/actuators.properties"),
 	@PropertySource(value = "classpath:test/ribbon.properties"),
-	@PropertySource(value = "classpath:test/eureka.properties")
+	@PropertySource(value = "classpath:test/eureka.properties"),
+	@PropertySource(value = "classpath:test/api.properties")
 })
 public class TestProfileConfig {}

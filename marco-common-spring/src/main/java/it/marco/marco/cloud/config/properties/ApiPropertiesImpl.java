@@ -1,5 +1,12 @@
 package it.marco.marco.cloud.config.properties;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
+@Component
+@ConfigurationProperties(prefix = "api")
+@PropertySource("classpath:api.properties")
 public class ApiPropertiesImpl implements ApiProperties {
 	
 	private String basePackage;

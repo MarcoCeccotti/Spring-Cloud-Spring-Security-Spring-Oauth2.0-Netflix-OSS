@@ -14,6 +14,7 @@ import org.springframework.context.annotation.PropertySources;
 	@PropertySource(value = "classpath:dev/hystrix.properties"),
 	@PropertySource(value = "classpath:dev/actuators.properties"),
 	@PropertySource(value = "classpath:dev/ribbon.properties"),
-	@PropertySource(value = "classpath:dev/eureka.properties")
+	@PropertySource(value = "classpath:dev/eureka.properties"),
+	@PropertySource(value = "classpath:dev/api.properties")
 })
 public class DevProfileConfig {}

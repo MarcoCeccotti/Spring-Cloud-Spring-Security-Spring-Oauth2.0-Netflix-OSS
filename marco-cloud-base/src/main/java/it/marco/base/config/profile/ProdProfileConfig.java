@@ -14,6 +14,7 @@ import org.springframework.context.annotation.PropertySources;
 	@PropertySource(value = "classpath:prod/hystrix.properties"),
 	@PropertySource(value = "classpath:prod/actuators.properties"),
 	@PropertySource(value = "classpath:prod/ribbon.properties"),
-	@PropertySource(value = "classpath:prod/eureka.properties")
+	@PropertySource(value = "classpath:prod/eureka.properties"),
+	@PropertySource(value = "classpath:prod/api.properties")
 })
 public class ProdProfileConfig {}
