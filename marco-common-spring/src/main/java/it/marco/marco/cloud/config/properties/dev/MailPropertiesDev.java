@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import it.marco.marco.cloud.config.properties.MailPropertiesImpl;
+import it.marco.marco.cloud.config.properties.MailProperties;
 
 @Component
 @ConfigurationProperties(prefix = "mail")
 @Profile("dev")
 @PropertySource("classpath:dev/mail.properties")
-public class MailPropertiesDev extends MailPropertiesImpl {}
+public class MailPropertiesDev extends MailProperties {}

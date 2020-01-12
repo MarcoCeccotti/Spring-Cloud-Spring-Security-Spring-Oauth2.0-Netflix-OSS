@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import it.marco.marco.cloud.config.properties.ApiPropertiesImpl;
+import it.marco.marco.cloud.config.properties.ApiProperties;
 
 @Component
 @ConfigurationProperties(prefix = "api")
 @Profile("dev")
 @PropertySource("classpath:dev/api.properties")
-public class ApiPropertiesDev extends ApiPropertiesImpl {}
+public class ApiPropertiesDev extends ApiProperties {}

@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import it.marco.marco.cloud.config.properties.AuthPropertiesImpl;
+import it.marco.marco.cloud.config.properties.AuthProperties;
 
 @Component
 @ConfigurationProperties(prefix = "auth")
 @Profile("test")
 @PropertySource("classpath:test/auth.properties")
-public class AuthPropertiesTest extends AuthPropertiesImpl {}
+public class AuthPropertiesTest extends AuthProperties {}

@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import it.marco.marco.cloud.config.properties.CrashlyticPropertiesImpl;
+import it.marco.marco.cloud.config.properties.CrashlyticProperties;
 
 @Component
 @ConfigurationProperties(prefix = "crashlytic")
 @Profile("test")
 @PropertySource("classpath:test/crashlytic.properties")
-public class CrashlyticPropertiesTest extends CrashlyticPropertiesImpl {}
+public class CrashlyticPropertiesTest extends CrashlyticProperties {}
