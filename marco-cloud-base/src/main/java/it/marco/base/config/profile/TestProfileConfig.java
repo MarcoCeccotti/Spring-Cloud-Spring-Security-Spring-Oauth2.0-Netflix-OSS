@@ -16,8 +16,4 @@ import org.springframework.context.annotation.PropertySources;
 	@PropertySource(value = "classpath:test/ribbon.properties"),
 	@PropertySource(value = "classpath:test/eureka.properties")
 })
-public class TestProfileConfig {
-	public TestProfileConfig() {
-		System.out.println("TEST - MI SONO INIZIALIZZATO!!!");
-	}
-}
+public class TestProfileConfig {}

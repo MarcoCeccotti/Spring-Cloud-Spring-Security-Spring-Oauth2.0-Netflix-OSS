@@ -16,8 +16,4 @@ import org.springframework.context.annotation.PropertySources;
 	@PropertySource(value = "classpath:prod/ribbon.properties"),
 	@PropertySource(value = "classpath:prod/eureka.properties")
 })
-public class ProdProfileConfig {
-	public ProdProfileConfig() {
-		System.out.println("PROD - MI SONO INIZIALIZZATO!!!");
-	}
-}
+public class ProdProfileConfig {}

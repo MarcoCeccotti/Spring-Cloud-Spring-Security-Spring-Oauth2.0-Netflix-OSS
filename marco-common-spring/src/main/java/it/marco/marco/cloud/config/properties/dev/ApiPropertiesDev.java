@@ -5,61 +5,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import it.marco.marco.cloud.config.properties.ApiProperties;
+import it.marco.marco.cloud.config.properties.ApiPropertiesImpl;
 
 @Component
 @ConfigurationProperties(prefix = "api")
 @Profile("dev")
 @PropertySource("classpath:dev/api.properties")
-public class ApiPropertiesDev implements ApiProperties {
-	
-	private String basePackage;
-	
-	private String title;
-	
-	private String description;
-	
-	private String version;
-	
-	private String antPathAuthenticated;
-
-	public String getBasePackage() {
-		return basePackage;
-	}
-
-	public void setBasePackage(String basePackage) {
-		this.basePackage = basePackage;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getVersion() {
-		return version;
-	}
-
-	public void setVersion(String version) {
-		this.version = version;
-	}
-
-	public String getAntPathAuthenticated() {
-		return antPathAuthenticated;
-	}
-
-	public void setAntPathAuthenticated(String antPathAuthenticated) {
-		this.antPathAuthenticated = antPathAuthenticated;
-	}
-}
+public class ApiPropertiesDev extends ApiPropertiesImpl {}
