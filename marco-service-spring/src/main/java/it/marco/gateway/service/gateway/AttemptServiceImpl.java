@@ -33,29 +33,26 @@ public class AttemptServiceImpl implements AttemptService {
 			    					});
     }
  
+    @Override
     public void loginSucceeded(String key) {
         this.badAttemptsCache.invalidate(key);
     }
 
+    @Override
     public boolean loginFailed(String key) {
-    	
-    	int badAttempts;
         try {
-            badAttempts = this.badAttemptsCache.get(key);
-        } catch (ExecutionException e) {
-            badAttempts = 0;
+            this.badAttemptsCache.put(key, this.badAttemptsCache.get(key) + 1);
+            return this.isBlocked(key);
+        } catch (Exception e) {
+            return true;
         }
-        
-        this.badAttemptsCache.put(key, ++badAttempts);
-        
-        return this.isBlocked(key);
     }
 
+	@Override
     public boolean isBlocked(String key) {
-    	
     	try {
             return this.badAttemptsCache.get(key) >= max_bad_attempts;
-        } catch (ExecutionException e) {
+        } catch (Exception e) {
             return false;
         }
     }
