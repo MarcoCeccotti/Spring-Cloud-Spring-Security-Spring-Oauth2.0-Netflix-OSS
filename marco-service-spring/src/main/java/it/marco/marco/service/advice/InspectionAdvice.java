@@ -16,6 +16,9 @@ public class InspectionAdvice {
 	
 	@Inject
 	private MailProperties mailProps;
+	
+	@Inject
+	private UserRepository userRepository;
 
 	@Around("execution(* it..*.Mail_server_DAO.save(..))")
 	public Object setMailSentToTrue(ProceedingJoinPoint pjp) throws Throwable {
@@ -36,5 +39,23 @@ public class InspectionAdvice {
 		if (mailProps.isEnable()) {
 			pjp.proceed();
 		}
+	}
+
+	@Before(value = "@annotation(org.springframework.security.access.prepost.PreAuthorize)") 
+	public void checkAuthMethods(JoinPoint jp) throws Throwable {
+	    // conditional logging based on annotation contents
+	    MethodSignature signature = (MethodSignature) jp.getSignature();
+	    for (Annotation annotation : signature.getMethod().getAnnotations()) {
+	    	if (annotation.toString().toUpperCase().contains("ROLE_SCHOOL")) {
+	    		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    		for (GrantedAuthority authority : auth.getAuthorities()) {
+	    			if (authority.getAuthority().equalsIgnoreCase("ROLE_SCHOOL")) {
+	    	    			UserNew user = this.userRepository.findByUsernameIgnoreCase(auth.getPrincipal().toString());
+	    			}
+	    		}
+	    		
+		    	System.out.println("Found method with ROLE_SCHOOL as annotation");
+	    	}
+	    }
 	}
 }
