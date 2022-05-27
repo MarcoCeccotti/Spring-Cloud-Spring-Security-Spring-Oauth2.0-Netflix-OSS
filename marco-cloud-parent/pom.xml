@@ -30,7 +30,7 @@
 		<springfox-swagger.version>2.9.2</springfox-swagger.version>
 		<spring-boot-admin.version>2.2.1</spring-boot-admin.version>
 		<log4j.version>1.2.17</log4j.version>
-		<gson.version>2.8.6</gson.version>
+		<gson.version>2.8.9</gson.version>
 		<poi-ooxml.version>3.8</poi-ooxml.version>
 		<tika-core.version>1.23</tika-core.version>
 		<imgscalr-lib.version>4.2</imgscalr-lib.version>
